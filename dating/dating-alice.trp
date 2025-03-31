@@ -1,0 +1,9 @@
+import stdio
+import declassifyutil
+
+let fun loop () = 
+                let val _ = print "Waiting for response..."
+                    val newResponse = receive [hn ("NEWMATCH", profile) => profile]
+                    val (lev, name, year, gender, interests, agent, pid) = newResponse
+                in loop ()
+                end

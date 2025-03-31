@@ -1,0 +1,42 @@
+(* Starting file for the server *)
+
+import lists
+import declassifyutil
+import stdio
+
+let 
+
+    fun checkMatch (profile1, agent1, profile2, agent2) = 
+            let 
+                val (lev1, name1, year1, gender1, interests1, _, _) = profile1
+                val (lev2, name2, year2, gender2, interests2, _, _) = profile2
+                val _ = printWithLabels ()
+            in
+                checkMatch (lev1, name1, year1, gender1, interests1, agent1, lev2, name2, year2, gender2, interests2, agent2)
+            end
+
+    fun server () = (* TODO: finish this *)
+            let 
+                val profile = receive [hn ("NEWPROFILE", data) => data]
+                val _ = printWithLabels (profile)
+            in 
+                server ()
+            end
+
+        (* Our main function starts the server and then requests the
+        dispatcher to send some clients this way. *)
+
+        fun main () =       
+            let 
+                val thisNode = node (self ())
+                val _ = printString ("Running node with identifier: " ^ thisNode)
+                val _ =  register ("datingServer", spawn server, authority)
+            in  (* TODO: Feel free to comment out the next line
+                        while you develop your solution and work on a few 
+                        custom clients;  *)
+                send (whereis ("@dispatcher", "dispatcher"), ("DISPATCH", thisNode)); 
+                ()
+            end
+in 
+    main ()
+end
