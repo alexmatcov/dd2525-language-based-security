@@ -1,42 +1,99 @@
-(* Starting file for the server *)
+(* Dating Server Implementation with Information Flow Control *)
 
 import lists
 import declassifyutil
 import stdio
 
 let 
+    (* Function to check if two profiles match *)
+    fun checkMatch (profile1, agent1, pid1, profile2, agent2, pid2) = 
+        let 
+            val (lev1, name1, year1, gender1, interests1) = profile1
+            val (lev2, name2, year2, gender2, interests2) = profile2
+            
+            (* Debug output *)
+            val _ = printString ("Checking match between " ^ name1 ^ " and " ^ name2)
 
-    fun checkMatch (profile1, agent1, profile2, agent2) = 
-            let 
-                val (lev1, name1, year1, gender1, interests1, _, _) = profile1
-                val (lev2, name2, year2, gender2, interests2, _, _) = profile2
-                val _ = printWithLabels ()
+        in      
+            (* Use pini block for protected computation *)
+            let pini authority
+                (* Run both agents to determine preferences and visible profiles *)
+                val (pref1, visProf1) = agent1 profile2
+                val (pref2, visProf2) = agent2 profile1
+                
+                (* Calculate match result while preserving labels *)
+                val secureMatch = pref1 andalso pref2
             in
-                checkMatch (lev1, name1, year1, gender1, interests1, agent1, lev2, name2, year2, gender2, interests2, agent2)
+                let
+                    (* Declassify match result to make control flow decision *)
+                    val declassifiedMatch = declassify (secureMatch, authority, `{}`)
+                    
+                    (* Extract declassified profiles to send to clients *)
+                    val profile1ForPid2 = declassify (visProf1, authority, `{}`)
+                    val profile2ForPid1 = declassify (visProf2, authority, `{}`)
+                in
+                    (* If both agents return true, send match notifications *)
+                    if declassifiedMatch then
+                        (printString ("Match found between " ^ name1 ^ " and " ^ name2);
+                         
+                         (* Send match notifications to the clients *)
+                         send (pid1, ("NEWMATCH", profile2ForPid1));
+                         send (pid2, ("NEWMATCH", profile1ForPid2)))
+                    else
+                        printString ("No match between " ^ name1 ^ " and " ^ name2)
+                end
             end
+        end
 
-    fun server () = (* TODO: finish this *)
-            let 
-                val profile = receive [hn ("NEWPROFILE", data) => data]
-                val _ = printWithLabels (profile)
-            in 
-                server ()
-            end
+    (* The server function maintains a list of profiles *)
+    fun server () =
+        let 
+            (* Process profiles recursively with an accumulator *)
+            fun processProfiles profilesList =
+                receive [
+                    (* Handle new profile submissions *)
+                    hn ("NEWPROFILE", data) =>
+                        let
+                            val (profile, agent, pid) = data
+                            val (_, name, _, _, _) = profile
+                            val _ = printString ("Profile received from: " ^ name)
+                            
+                            (* Check the new profile against all existing profiles *)
+                            fun matchWith [] = ()
+                              | matchWith ((storedProfile, storedAgent, storedPid)::rest) = 
+                                  (checkMatch (profile, agent, pid, 
+                                              storedProfile, storedAgent, storedPid);
+                                   matchWith rest)
+                                
+                            (* Run matching against existing profiles *)
+                            val _ = matchWith profilesList
+                        in
+                            (* Continue processing with updated profiles list *)
+                            processProfiles (data :: profilesList)
+                        end
+                ]
+        in
+            processProfiles []
+        end
 
-        (* Our main function starts the server and then requests the
-        dispatcher to send some clients this way. *)
-
-        fun main () =       
-            let 
-                val thisNode = node (self ())
-                val _ = printString ("Running node with identifier: " ^ thisNode)
-                val _ =  register ("datingServer", spawn server, authority)
-            in  (* TODO: Feel free to comment out the next line
-                        while you develop your solution and work on a few 
-                        custom clients;  *)
-                send (whereis ("@dispatcher", "dispatcher"), ("DISPATCH", thisNode)); 
-                ()
-            end
+    (* Main function starts the server and then requests the
+       dispatcher to send some clients this way. *)
+    fun main () =       
+        let 
+            val thisNode = node (self ())
+            val _ = printString ("Running node with identifier: " ^ thisNode)
+            
+            (* Register the server with the system *)
+            val _ = register ("datingServer", spawn server, authority)
+            val _ = printString "Server registered successfully"
+            
+            (* Contact dispatcher to send test clients *)
+            val _ = printString "Contacting dispatcher to send test clients..."
+            val _ = send (whereis ("@dispatcher", "dispatcher"), ("DISPATCH", thisNode))
+            val _ = printString "Dispatcher contacted, waiting for clients..."
+        in
+            ()
+        end
 in 
     main ()
 end
