@@ -57,7 +57,6 @@ let
                             val (profile, agent, pid) = data
                             val (_, name, _, _, _) = profile
                             val _ = printString ("Profile received from: " ^ name)
-                            val _ = printWithLabels(data) (* testing the matching *)
                             
                             (* Check the new profile against all existing profiles *)
                             fun matchWith [] = ()
