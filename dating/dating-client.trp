@@ -1,4 +1,78 @@
-(* Placeholder for the dating-client. Note that in order to communicate 
-   with your server you will need to create the corresponding trustmap *)
-   
-0
+import stdio
+import declassifyutil
+import lists
+
+let 
+    fun loop () = 
+        let 
+            val _ = print "Waiting for response..."
+            val newResponse = receive [hn ("NEWMATCH", profile) => profile]
+            val _ = printWithLabels("Match found: " ^ newResponse)
+            val (lev, name, year, gender, interests, agent, pid) = newResponse
+        in 
+            ()
+        end
+
+    fun aliceClient server_id =
+        let 
+            val levAlice = `{alice}`
+            val nameAlice = "Alice" raisedTo levAlice
+            val yearAlice = 2105 raisedTo levAlice
+            val genderAlice = true raisedTo levAlice
+            val interestsAlice = ["dragons", "wars", "fire"] raisedTo levAlice
+            val aliceProfile = (levAlice, nameAlice, yearAlice, genderAlice, interestsAlice) raisedTo levAlice
+
+            fun shareInterest [] _ = false
+            | shareInterest (x::xs) ys = 
+                if elem x ys then true
+                else shareInterest xs ys
+
+
+            fun aliceAgent(otherProfile) =
+                let 
+                    val (otherLev, otherName, otherYear, otherGender, otherInterests) = otherProfile
+
+                    val declYearOther = declassify(otherYear, authority, otherLev)
+                    val declYearAlice = declassify(yearAlice, authority, `{}`)
+
+                    val matchAge = declYearOther = declYearAlice 
+
+                    val declInterestsOther = declassify(otherInterests, authority, otherLev)
+                    val declInterestsAlice = declassify(interestsAlice, authority, `{}`)
+
+                    val matchInterests = shareInterest declInterestsAlice declInterestsOther 
+
+                    val match = matchAge andalso matchInterests
+                    val visibleProfile = 
+                        if match then
+                            let pini authority
+                                val _ = debugpc()
+                                val vp = declassify(aliceProfile, authority, otherLev)
+                                val _ = debugpc()
+                                (*val (lev, name, year, gender, interests) = vp
+                                val _ = printWithLabels("Profile sent to server: " ^ vp)*)
+                            in
+                                vp
+                            end
+                        else
+                            (false, ())
+                    val _ = debugpc()
+                in
+                    (match, visibleProfile)
+
+                end
+
+            val serverPid = whereis(server_id, "datingServer")
+            val _ = send (serverPid, ("NEWPROFILE", (aliceProfile, aliceAgent, self())) raisedTo `{}`)
+
+        in 
+            ()
+        end
+
+    val _ = aliceClient("Qmax3Eah5UPV3ByEENvcXX8pQRum4yGbHQu7AcRaCjmPmv")
+in
+    loop()
+end
+
+
+
