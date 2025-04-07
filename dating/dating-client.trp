@@ -5,10 +5,10 @@ import lists
 let 
     fun loop () = 
         let 
-            val _ = print "Waiting for response..."
+            val _ = printString "Waiting for response..."
             val newResponse = receive [hn ("NEWMATCH", profile) => profile]
-            val _ = printWithLabels("Match found: " ^ newResponse)
-            val (lev, name, year, gender, interests, agent, pid) = newResponse
+            val (lev, name, year, gender, interests) = newResponse
+            val _ = printString("Match found: " ^ name)
         in 
             ()
         end
@@ -16,11 +16,11 @@ let
     fun aliceClient server_id =
         let 
             val levAlice = `{alice}`
-            val nameAlice = "Alice" raisedTo levAlice
-            val yearAlice = 2105 raisedTo levAlice
-            val genderAlice = true raisedTo levAlice
-            val interestsAlice = ["dragons", "wars", "fire"] raisedTo levAlice
-            val aliceProfile = (levAlice, nameAlice, yearAlice, genderAlice, interestsAlice) raisedTo levAlice
+            val nameAlice = "Alice" 
+            val yearAlice = 2105 
+            val genderAlice = true
+            val interestsAlice = ["dragons", "wars", "fire"]
+            val aliceProfile = (levAlice, nameAlice, yearAlice, genderAlice, interestsAlice)
 
             fun shareInterest [] _ = false
             | shareInterest (x::xs) ys = 
