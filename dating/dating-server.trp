@@ -31,6 +31,9 @@ let
                     (* Extract declassified profiles to send to clients *)
                     val profile1ForPid2 = declassify (visProf1, authority, `{}`)
                     val profile2ForPid1 = declassify (visProf2, authority, `{}`)
+                    
+                    val _ = printWithLabels (profile1ForPid2)
+                    val _ = printWithLabels (profile2ForPid1)
                 in
                     (* If both agents return true, send match notifications *)
                     if declassifiedMatch then
@@ -38,7 +41,9 @@ let
                          
                          (* Send match notifications to the clients *)
                          send (pid1, ("NEWMATCH", profile2ForPid1));
-                         send (pid2, ("NEWMATCH", profile1ForPid2)))
+                         printString("Sent match to " ^ name1);
+                         send (pid2, ("NEWMATCH", profile1ForPid2)));
+                         printString("Sent match to " ^ name2)
                     else
                         printString ("No match between " ^ name1 ^ " and " ^ name2)
                 end
