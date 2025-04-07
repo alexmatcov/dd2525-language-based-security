@@ -4,4 +4,4 @@ dating-server:
 
 dating-client:
 	$(TROUPE)/bin/troupec dating-client.trp -o ./out/dating-client.js
-	node $(TROUPE)/rt/built/troupe.js -f=./out/dating-client.js --trustmap=../trustmaps/client.json
+	node $(TROUPE)/rt/built/troupe.js -f=./out/dating-client.js --id=../ids/id-alice.json --trustmap=../trustmaps/client.json --aliases=aliases.json
