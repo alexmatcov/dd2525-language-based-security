@@ -28,50 +28,35 @@ let
                 else shareInterest xs ys
 
 
-            fun aliceAgent(otherProfile) =
-                let 
-                    val (otherLev, otherName, otherYear, otherGender, otherInterests) = otherProfile
+            fun aliceAgent profileOther =
+                let
+                    val (levOther, nameOther, yearOther, genderOther, interestsOther) = profileOther
 
-                    val declYearOther = declassify(otherYear, authority, otherLev)
-                    val declYearAlice = declassify(yearAlice, authority, `{}`)
+                    val matchAge = yearOther = yearAlice 
 
-                    val matchAge = declYearOther = declYearAlice 
-
-                    val declInterestsOther = declassify(otherInterests, authority, otherLev)
-                    val declInterestsAlice = declassify(interestsAlice, authority, `{}`)
-
-                    val matchInterests = shareInterest declInterestsAlice declInterestsOther 
+                    val matchInterests = shareInterest interestsAlice interestsOther 
 
                     val match = matchAge andalso matchInterests
-                    val visibleProfile = 
+
+                    val maybeProfile = 
                         if match then
-                            let pini authority
-                                val _ = debugpc()
-                                val vp = declassify(aliceProfile, authority, otherLev)
-                                val _ = debugpc()
-                                (*val (lev, name, year, gender, interests) = vp
-                                val _ = printWithLabels("Profile sent to server: " ^ vp)*)
-                            in
-                                vp
-                            end
+                            aliceProfile
                         else
-                            (false, ())
-                    val _ = debugpc()
+                            ()
                 in
-                    (match, visibleProfile)
+                    (match, maybeProfile)
 
                 end
 
-            val serverPid = whereis(server_id, "datingServer")
-            val _ = send (serverPid, ("NEWPROFILE", (aliceProfile, aliceAgent, self())) raisedTo `{}`)
+            val _ = send (server_id, ("NEWPROFILE", (aliceProfile, aliceAgent, self())))
 
         in 
-            ()
+            loop ()
         end
 
-    val _ = aliceClient("Qmax3Eah5UPV3ByEENvcXX8pQRum4yGbHQu7AcRaCjmPmv")
+    val serverId = whereis ("@datingServer", "datingServer")
 in
-    loop()
+    spawn (fn () => aliceClient serverId)
 end
 
 
