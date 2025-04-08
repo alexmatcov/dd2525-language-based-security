@@ -8,7 +8,11 @@ let
             val _ = printString "Waiting for response..."
             val newResponse = receive [hn ("NEWMATCH", profile) => profile]
             val (lev, name, year, gender, interests) = newResponse
-            val _ = printString("Match found: " ^ name)
+            val _ = printString("Match found!")
+            val _ = printString(name)
+            val _ = print(year)
+            val _ = if gender then printString("female") else ("male")
+            val _ = print(interests)
         in 
             loop ()
         end
