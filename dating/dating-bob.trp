@@ -1,0 +1,68 @@
+import stdio
+import declassifyutil
+import lists
+
+let 
+    fun loop () = 
+        let 
+            val _ = printString "Waiting for response..."
+            val newResponse = receive [hn ("NEWMATCH", profile) => profile]
+            val (lev, name, year, gender, interests) = newResponse
+            val _ = printString("Match found!")
+            val _ = printString(name)
+            val _ = print(year)
+            val _ = if gender then printString("female") else ("male")
+            val _ = print(interests)
+        in 
+            loop ()
+        end
+
+    fun bobClient server_id =
+        let 
+            val levBob = `{bob}` raisedTo `{}`
+            val nameBob = "Bob" raisedTo levBob
+            val yearBob = 2101 raisedTo levBob
+            val genderBob = false raisedTo levBob
+            val interestsBob = ["winter", "beer", "swords", "dragons", "wars", "fire"] raisedTo levBob
+            val bobProfile = (levBob, nameBob, yearBob, genderBob, interestsBob) raisedTo `{}`
+
+            fun shareInterest [] _ = false
+            | shareInterest (x::xs) ys = 
+                if elem x ys then true
+                else shareInterest xs ys
+
+
+            fun bobAgent profileOther =
+                let
+                    val (levOther, nameOther, yearOther, genderOther, interestsOther) = profileOther
+
+                    val matchAge = yearOther > yearBob 
+                    val matchInterests = shareInterest interestsBob interestsOther
+
+                    val match = matchAge andalso matchInterests
+
+                    val maybeProfile = 
+                        if match then
+                            bobProfile
+                        else
+                            ()
+
+                    val bobProfileForOther = declassifydeep(maybeProfile, authority, levOther)
+
+                in
+                    (match, bobProfileForOther)
+                end
+
+            val _ = send (server_id, ("NEWPROFILE", (bobProfile, bobAgent, self())))
+
+        in 
+            loop ()
+        end
+
+    val serverId = whereis ("@datingServer", "datingServer")
+in
+    spawn (fn () => bobClient serverId)
+end
+
+
+
