@@ -10,17 +10,17 @@ let
             val (lev, name, year, gender, interests) = newResponse
             val _ = printString("Match found: " ^ name)
         in 
-            ()
+            loop ()
         end
 
     fun aliceClient server_id =
         let 
-            val levAlice = `{alice}`
-            val nameAlice = "Alice" 
-            val yearAlice = 2105 
-            val genderAlice = true
-            val interestsAlice = ["dragons", "wars", "fire"]
-            val aliceProfile = (levAlice, nameAlice, yearAlice, genderAlice, interestsAlice)
+            val levAlice = `{alice}` raisedTo `{}`
+            val nameAlice = "Alice" raisedTo levAlice
+            val yearAlice = 2105 raisedTo levAlice
+            val genderAlice = true raisedTo levAlice
+            val interestsAlice = ["dragons", "wars", "fire"] raisedTo levAlice
+            val aliceProfile = (levAlice, nameAlice, yearAlice, genderAlice, interestsAlice) raisedTo `{}`
 
             fun shareInterest [] _ = false
             | shareInterest (x::xs) ys = 
@@ -33,8 +33,7 @@ let
                     val (levOther, nameOther, yearOther, genderOther, interestsOther) = profileOther
 
                     val matchAge = yearOther = yearAlice 
-
-                    val matchInterests = shareInterest interestsAlice interestsOther 
+                    val matchInterests = shareInterest interestsAlice interestsOther
 
                     val match = matchAge andalso matchInterests
 
@@ -43,9 +42,11 @@ let
                             aliceProfile
                         else
                             ()
-                in
-                    (match, maybeProfile)
 
+                    val aliceProfileForOther = declassifydeep(maybeProfile, authority, levOther)
+
+                in
+                    (match, aliceProfileForOther)
                 end
 
             val _ = send (server_id, ("NEWPROFILE", (aliceProfile, aliceAgent, self())))
