@@ -1,0 +1,50 @@
+import stdio
+import declassifyutil
+import lists
+
+let 
+    fun loop () = 
+        let 
+            val _ = printString "Waiting for response..."
+            val newResponse = receive [hn ("LEAKED", lev) => lev]
+            val _ = printWithLabels(newResponse)
+        in 
+            loop ()
+        end
+
+    fun maliciousClient server_id =
+        let 
+            val levMalicious = `{Malicious}` raisedTo `{}`
+            val nameMalicious = "Malicious" raisedTo levMalicious
+            val yearMalicious = 2105 raisedTo levMalicious
+            val genderMalicious = true raisedTo levMalicious
+            val interestsMalicious = ["scam", "leak", "harm"] raisedTo levMalicious
+            val maliciousProfile = (levMalicious, nameMalicious, yearMalicious, genderMalicious, interestsMalicious) raisedTo `{}`
+            val malicious_id = self()
+
+            fun maliciousAgent profileOther =
+            let
+                (*spawn function that has a receive and sends back info*)
+                val interceptData = receive [hn ("NEWPROFILE", data) => data]
+                val (interceptProfile, interceptAgent, interceptPid) = interceptData
+                val (interceptLev, _, _, _, _) = interceptProfile
+                val _ = debugpc()
+                val _ = send(malicious_id, ("LEAKED", interceptLev))
+
+            in
+                (maliciousAgent profileOther)
+            end
+
+        val _ = send (server_id, ("NEWPROFILE", (maliciousProfile, maliciousAgent, malicious_id)))
+
+    in
+        loop ()
+    end
+
+    val serverId = whereis ("@datingServer", "datingServer")
+in
+    spawn (fn () => maliciousClient serverId)
+end
+
+
+
