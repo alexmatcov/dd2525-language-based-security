@@ -49,6 +49,9 @@ app
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "use.fontawesome.com", "ajax.googleapis.com", "cdnjs.cloudflare.com"]
+      //Fix for Third Party Endpoints: new script directive
+      //scriptSrc: ["'self'", "use.fontawesome.com/fa0d33d6bd.js", "ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"]
+
     }
   }))
   .use(passport.initialize())
