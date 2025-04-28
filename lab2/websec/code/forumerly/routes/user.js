@@ -5,6 +5,8 @@ const mongo = require('../db')
 const moment = require('moment-timezone')
 const fs = require('fs')
 
+const FileType = require('file-type') //Import for File Validation
+
 // File upload middleware (for profile pictures)
 const multer = require('multer')
 const upload = multer({dest: 'public/images/profileImages', limits: {fileSize: 2000000}})
@@ -247,7 +249,21 @@ router
 
   // POST route for profile picture upload
   .post('/upload', upload.single('avatar'), (req, res) => {
+
+    //fix for Unrestricted File Upload - File Validation
+  /*
+  .post('/upload', upload.single('avatar'), async (req, res) => {
     // Validate file path
+    const filePath = req.file.path;
+    const fileBuffer = fs.readFileSync(filePath);
+    const fileType = await FileType.fromBuffer(fileBuffer);
+
+    if (!fileType || !['image/png'].includes(fileType.mime)) {
+      fs.unlinkSync(filePath); 
+      req.flash('error', 'Please submit a valid image.');
+      return res.redirect('back');
+    }*/
+
       // Move the file and rename it to the user's username
       fs.rename(req.file.path, req.file.destination + '/' + req.user.username, (err) => {
         if (err) throw err;

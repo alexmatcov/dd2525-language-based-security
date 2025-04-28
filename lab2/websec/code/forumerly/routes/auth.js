@@ -14,6 +14,8 @@ function validatePassword(req, res, next) {
 
   //console.log(pass, name)
   // vaildate password
+
+  //if (name.includes(pass)) { //fix for ReDoS vulnerability
   if (name.match(pass)) {
     req.flash('error', 'Do not include password in name.')
     req.flash('message', 'Do not include password in name.')
