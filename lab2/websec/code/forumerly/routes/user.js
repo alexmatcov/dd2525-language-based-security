@@ -16,6 +16,7 @@ function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
 }
 
+//posibble polution patern
 function merge(target, source) {
   Object.keys(source).forEach(key => {
     if (isObject(source[key])) {
@@ -30,6 +31,22 @@ function merge(target, source) {
 
   return target;
 }
+
+// mitigation:
+
+// function merge ( target , source ) {
+//   Object . keys ( source ) . forEach ( key = > {
+//   if ([ ’ __proto__ ’ , ’ constructor ’ , ’ prototype ’].
+//   includes ( key ) ) return ;
+//   if ( isObject ( source [ key ]) ) {
+//   if (! target [ key ]) target [ key ] = {};
+//   merge ( target [ key ] , source [ key ]) ;
+//   } else {
+//   target [ key ] = source [ key ];
+//   }
+//   }) ;
+//   return target ;
+//   }
 
 // Middleware requiring the user to be authenticated
 function loginRequired(req, res, next) {
