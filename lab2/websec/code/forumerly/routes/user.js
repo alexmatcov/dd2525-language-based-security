@@ -32,22 +32,6 @@ function merge(target, source) {
   return target;
 }
 
-// mitigation:
-
-// function merge ( target , source ) {
-//   Object . keys ( source ) . forEach ( key = > {
-//   if ([ ’ __proto__ ’ , ’ constructor ’ , ’ prototype ’].
-//   includes ( key ) ) return ;
-//   if ( isObject ( source [ key ]) ) {
-//   if (! target [ key ]) target [ key ] = {};
-//   merge ( target [ key ] , source [ key ]) ;
-//   } else {
-//   target [ key ] = source [ key ];
-//   }
-//   }) ;
-//   return target ;
-//   }
-
 // Middleware requiring the user to be authenticated
 function loginRequired(req, res, next) {
   if (!req.isAuthenticated()) {
@@ -289,7 +273,8 @@ router
     })
   })
 
-
+  //fix
+  // .post('/upload/users',adminRequired, uploadUsers.single('upload-users'), async (req, res) => {
   .post('/upload/users', uploadUsers.single('upload-users'), async (req, res) => {
     try {
       var newUsers = JSON.parse(req.file.buffer.toString())

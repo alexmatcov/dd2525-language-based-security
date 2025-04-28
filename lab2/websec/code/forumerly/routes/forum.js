@@ -217,6 +217,13 @@ router
                 thread.lcCategory = thread.category.toLowerCase()
                 thread.lcTopic = thread.topic
                 thread.topic = thread.topic.capitalizeFirstLetter()
+              // fix
+              //   if(thread.body.contains("<script")     ||
+              //     thread.body.contains("<img")         || 
+              //     thread.body.contains("<svg")         || 
+              //     thread.body.contains('javascript:')) {
+              //    thread.body = "";
+              //  } 
                 thread.body = thread.body
                   .replace('<script', '')
                   .replace('<img', '')
