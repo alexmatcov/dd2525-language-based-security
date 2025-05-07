@@ -71,8 +71,8 @@ function Top (rt) {
     let _STACK = _T.callStack
     let _SP = _T._sp
     let _SP_OLD
-    _STACK[ _SP + 12]  = _T.checkDataBoundsEntry($env.__dataLevel)
-    _T.boundSlot =  _SP + 12
+    _STACK[ _SP + 13]  = _T.checkDataBoundsEntry($env.__dataLevel)
+    _T.boundSlot =  _SP + 13
     const gensym205$$$const = 5
     const gensym202$$$const = "pattern match failure in let declaration"
     const gensym198$$$const = 1
@@ -80,14 +80,14 @@ function Top (rt) {
     const gensym194$$$const = 3
     const gensym192$$$const = 4
     const gensym187$$$const = rt.__unitbase
-    _STACK[ _SP + 11] =  $env
+    _STACK[ _SP + 12] =  $env
     const _$reg0_val = _T.r0_val;
     _STACK[ _SP + 2] =  _$reg0_val
     let _$reg0_lev = _T.pc;
     let _$reg0_tlev = _T.pc;
     let _pc_init = _T.pc;
     let _bl_7 = _T.pc;
-    if (! _STACK[ _SP + 12] ) {
+    if (! _STACK[ _SP + 13] ) {
       _$reg0_lev = _T.r0_lev;
       _$reg0_tlev = _T.r0_tlev;
       _pc_init = _T.pc;
@@ -102,16 +102,16 @@ function Top (rt) {
     let _raw_5 = _T.pc;
     let _pc_16 = _T.pc;
     let _bl_17 = _T.pc;
-    if (! _STACK[ _SP + 12] ) {
+    if (! _STACK[ _SP + 13] ) {
       _raw_5 = rt.join (_$reg0_lev,_pc_init);;
       const _raw_9 = rt.join (_pc_init,_raw_5);;
       _pc_16 = rt.join (_pc_init,_raw_9);;
       _bl_17 = rt.join (_bl_7,_raw_9);;
       _T.bl = rt.wrap_block_rhs (_bl_7);
     }
-    _STACK[ _SP + 6] =  _raw_5
+    _STACK[ _SP + 8] =  _raw_5
     _SP_OLD = _SP; 
-    _SP = _SP +  18 ;
+    _SP = _SP +  19 ;
     _STACK[_SP - 5] = _SP_OLD;
     _STACK[_SP - 4] = _T.pc;
     _STACK[_SP - 3] = this.$$$bobAgent85$$$kont5
@@ -163,8 +163,8 @@ function Top (rt) {
   }
   this.bobAgent85.deps = [];
   this.bobAgent85.libdeps = ['declassifyutil'];
-  this.bobAgent85.serialized = "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";
-  this.bobAgent85.framesize = 12;
+  this.bobAgent85.serialized = "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";
+  this.bobAgent85.framesize = 13;
   this.gensym126 = ($env) => {
     let _T = rt.runtime.$t
     let _STACK = _T.callStack
@@ -317,7 +317,7 @@ function Top (rt) {
     const gensym244$$$const = rt.mkLabel("{bob}")
     const gensym245$$$const = rt.mkLabel("{}")
     const gensym242$$$const = "Bob"
-    const gensym240$$$const = 2105
+    const gensym240$$$const = 2101
     const gensym238$$$const = false
     const gensym230$$$const = "winter"
     const gensym231$$$const = "beer"
@@ -473,7 +473,7 @@ function Top (rt) {
   }
   this.bobClient57.deps = ['shareInterest74', 'bobAgent85'];
   this.bobClient57.libdeps = [];
-  this.bobClient57.serialized = "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";
+  this.bobClient57.serialized = "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";
   this.bobClient57.framesize = 7;
   this.gensym72 = ($env) => {
     let _T = rt.runtime.$t
@@ -939,24 +939,24 @@ function Top (rt) {
     const gensym194$$$const = 3
     const gensym192$$$const = 4
     const gensym187$$$const = rt.__unitbase
-    const _raw_164 = _STACK[ _SP + -14]
-    const _raw_165 = _STACK[ _SP + -13]
-    const _val_153 = _STACK[ _SP + -11]
-    const _r0_val_186 = _T.r0_val;
-    rt.rawAssertIsFunction (_r0_val_186);
+    const _raw_164 = _STACK[ _SP + -15]
+    const _raw_165 = _STACK[ _SP + -14]
+    const _val_153 = _STACK[ _SP + -10]
+    const _r0_val_204 = _T.r0_val;
+    rt.rawAssertIsFunction (_r0_val_204);
     if (! _STACK[ _SP + -6] ) {
-      const _r0_lev_187 = _T.r0_lev;
-      const _pc_179 = _T.pc;
-      const _bl_180 = _T.bl;
-      const _pc_181 = rt.join (_pc_179,_r0_lev_187);;
-      const _bl_182 = rt.join (_bl_180,_r0_lev_187);;
-      _T.pc = _pc_181;
-      _T.bl = rt.wrap_block_rhs (_bl_182);
+      const _r0_lev_205 = _T.r0_lev;
+      const _pc_197 = _T.pc;
+      const _bl_198 = _T.bl;
+      const _pc_199 = rt.join (_pc_197,_r0_lev_205);;
+      const _bl_200 = rt.join (_bl_198,_r0_lev_205);;
+      _T.pc = _pc_199;
+      _T.bl = rt.wrap_block_rhs (_bl_200);
     }
     _T.r0_val = _val_153;
     _T.r0_lev = _raw_164;
     _T.r0_tlev = _raw_165;
-    return _r0_val_186
+    return _r0_val_204
   }
   this.$$$bobAgent85$$$kont0.debugname = "$$$bobAgent85$$$kont0"
   this.$$$bobAgent85$$$kont1 = () => {
@@ -964,8 +964,8 @@ function Top (rt) {
     let _STACK = _T.callStack
     let _SP = _T._sp
     let _SP_OLD
-    _STACK[ _SP + 12] = _T.checkDataBounds( _STACK[ _SP + 12] )
-    _T.boundSlot = _SP + 12
+    _STACK[ _SP + 13] = _T.checkDataBounds( _STACK[ _SP + 13] )
+    _T.boundSlot = _SP + 13
     const gensym205$$$const = 5
     const gensym202$$$const = "pattern match failure in let declaration"
     const gensym198$$$const = 1
@@ -973,21 +973,21 @@ function Top (rt) {
     const gensym194$$$const = 3
     const gensym192$$$const = 4
     const gensym187$$$const = rt.__unitbase
-    const $decltemp$100 = _STACK[ _SP + 8]
-    const _r0_val_263 = _T.r0_val;
-    let _r0_lev_264 = _T.pc;
-    let _r0_tlev_265 = _T.pc;
-    let _pc_252 = _T.pc;
-    if (! _STACK[ _SP + 12] ) {
-      _r0_lev_264 = _T.r0_lev;
-      _r0_tlev_265 = _T.r0_tlev;
-      _pc_252 = _T.pc;
+    const $decltemp$100 = _STACK[ _SP + 10]
+    const _r0_val_281 = _T.r0_val;
+    let _r0_lev_282 = _T.pc;
+    let _r0_tlev_283 = _T.pc;
+    let _pc_270 = _T.pc;
+    if (! _STACK[ _SP + 13] ) {
+      _r0_lev_282 = _T.r0_lev;
+      _r0_tlev_283 = _T.r0_tlev;
+      _pc_270 = _T.pc;
     }
-    const $decltemp$104 = rt.constructLVal (_r0_val_263,_r0_lev_264,_r0_tlev_265);
-    const _raw_253 = rt.mkTuple([$decltemp$100, $decltemp$104]);
-    _T.r0_val = _raw_253;
-    _T.r0_lev = _pc_252;
-    _T.r0_tlev = _pc_252;
+    const $decltemp$104 = rt.constructLVal (_r0_val_281,_r0_lev_282,_r0_tlev_283);
+    const _raw_271 = rt.mkTuple([$decltemp$100, $decltemp$104]);
+    _T.r0_val = _raw_271;
+    _T.r0_lev = _pc_270;
+    _T.r0_tlev = _pc_270;
     return _T.returnImmediate ();
   }
   this.$$$bobAgent85$$$kont1.debugname = "$$$bobAgent85$$$kont1"
@@ -996,8 +996,8 @@ function Top (rt) {
     let _STACK = _T.callStack
     let _SP = _T._sp
     let _SP_OLD
-    _STACK[ _SP + 12] = _T.checkDataBounds( _STACK[ _SP + 12] )
-    _T.boundSlot = _SP + 12
+    _STACK[ _SP + 13] = _T.checkDataBounds( _STACK[ _SP + 13] )
+    _T.boundSlot = _SP + 13
     const gensym205$$$const = 5
     const gensym202$$$const = "pattern match failure in let declaration"
     const gensym198$$$const = 1
@@ -1005,34 +1005,34 @@ function Top (rt) {
     const gensym194$$$const = 3
     const gensym192$$$const = 4
     const gensym187$$$const = rt.__unitbase
-    const gensym199 = _STACK[ _SP + 10]
-    const $env = _STACK[ _SP + 11]
-    const _r0_val_266 = _T.r0_val;
-    let _r0_lev_267 = _T.pc;
-    let _r0_tlev_268 = _T.pc;
-    if (! _STACK[ _SP + 12] ) {
-      _r0_lev_267 = _T.r0_lev;
-      _r0_tlev_268 = _T.r0_tlev;
+    const gensym199 = _STACK[ _SP + 11]
+    const $env = _STACK[ _SP + 12]
+    const _r0_val_284 = _T.r0_val;
+    let _r0_lev_285 = _T.pc;
+    let _r0_tlev_286 = _T.pc;
+    if (! _STACK[ _SP + 13] ) {
+      _r0_lev_285 = _T.r0_lev;
+      _r0_tlev_286 = _T.r0_tlev;
     }
-    const $decltemp$102 = rt.constructLVal (_r0_val_266,_r0_lev_267,_r0_tlev_268);
-    const lval227 = rt.loadLib('declassifyutil', 'declassifydeep', this);
-    const _val_228 = lval227.val;
-    const _vlev_229 = lval227.lev;
-    const _raw_238 = rt.mkTuple([$decltemp$102, $env.gensym265, gensym199]);
-    rt.rawAssertIsFunction (_val_228);
-    let _pc_231 = _T.pc;
-    let _pc_247 = _T.pc;
-    let _bl_248 = _T.pc;
-    if (! _STACK[ _SP + 12] ) {
-      _pc_231 = _T.pc;
-      const _raw_232 = rt.join (_vlev_229,_pc_231);;
-      const _raw_235 = rt.join (_pc_231,_raw_232);;
-      const _bl_246 = _T.bl;
-      _pc_247 = rt.join (_pc_231,_raw_235);;
-      _bl_248 = rt.join (_bl_246,_raw_235);;
+    const $decltemp$102 = rt.constructLVal (_r0_val_284,_r0_lev_285,_r0_tlev_286);
+    const lval245 = rt.loadLib('declassifyutil', 'declassifydeep', this);
+    const _val_246 = lval245.val;
+    const _vlev_247 = lval245.lev;
+    const _raw_256 = rt.mkTuple([$decltemp$102, $env.gensym265, gensym199]);
+    rt.rawAssertIsFunction (_val_246);
+    let _pc_249 = _T.pc;
+    let _pc_265 = _T.pc;
+    let _bl_266 = _T.pc;
+    if (! _STACK[ _SP + 13] ) {
+      _pc_249 = _T.pc;
+      const _raw_250 = rt.join (_vlev_247,_pc_249);;
+      const _raw_253 = rt.join (_pc_249,_raw_250);;
+      const _bl_264 = _T.bl;
+      _pc_265 = rt.join (_pc_249,_raw_253);;
+      _bl_266 = rt.join (_bl_264,_raw_253);;
     }
     _SP_OLD = _SP; 
-    _SP = _SP +  18 ;
+    _SP = _SP +  19 ;
     _STACK[_SP - 5] = _SP_OLD;
     _STACK[_SP - 4] = _T.pc;
     _STACK[_SP - 3] = this.$$$bobAgent85$$$kont1
@@ -1040,13 +1040,13 @@ function Top (rt) {
     _STACK[_SP - 1] = false;
     _T._sp = _SP;
     if (! _STACK[ _SP + -6] ) {
-      _T.pc = _pc_247;
-      _T.bl = rt.wrap_block_rhs (_bl_248);
+      _T.pc = _pc_265;
+      _T.bl = rt.wrap_block_rhs (_bl_266);
     }
-    _T.r0_val = _raw_238;
-    _T.r0_lev = _pc_231;
-    _T.r0_tlev = _pc_231;
-    return _val_228
+    _T.r0_val = _raw_256;
+    _T.r0_lev = _pc_249;
+    _T.r0_tlev = _pc_249;
+    return _val_246
   }
   this.$$$bobAgent85$$$kont2.debugname = "$$$bobAgent85$$$kont2"
   this.$$$bobAgent85$$$kont3 = () => {
@@ -1054,8 +1054,8 @@ function Top (rt) {
     let _STACK = _T.callStack
     let _SP = _T._sp
     let _SP_OLD
-    _STACK[ _SP + 12] = _T.checkDataBounds( _STACK[ _SP + 12] )
-    _T.boundSlot = _SP + 12
+    _STACK[ _SP + 13] = _T.checkDataBounds( _STACK[ _SP + 13] )
+    _T.boundSlot = _SP + 13
     const gensym205$$$const = 5
     const gensym202$$$const = "pattern match failure in let declaration"
     const gensym198$$$const = 1
@@ -1064,27 +1064,27 @@ function Top (rt) {
     const gensym192$$$const = 4
     const gensym187$$$const = rt.__unitbase
     const _pc_init = _STACK[ _SP + 3]
-    const $env = _STACK[ _SP + 11]
-    const _r0_val_269 = _T.r0_val;
-    let _r0_lev_270 = _T.pc;
-    let _r0_tlev_271 = _T.pc;
-    if (! _STACK[ _SP + 12] ) {
-      _r0_lev_270 = _T.r0_lev;
-      _r0_tlev_271 = _T.r0_tlev;
+    const $env = _STACK[ _SP + 12]
+    const _r0_val_287 = _T.r0_val;
+    let _r0_lev_288 = _T.pc;
+    let _r0_tlev_289 = _T.pc;
+    if (! _STACK[ _SP + 13] ) {
+      _r0_lev_288 = _T.r0_lev;
+      _r0_tlev_289 = _T.r0_tlev;
     }
-    const $decltemp$100 = rt.constructLVal (_r0_val_269,_r0_lev_270,_r0_tlev_271);
-    _STACK[ _SP + 8] =  $decltemp$100
-    rt.rawAssertIsBoolean (_r0_val_269);
-    let _pc_213 = _T.pc;
-    let _bl_214 = _T.pc;
-    if (! _STACK[ _SP + 12] ) {
-      const _pc_211 = _T.pc;
-      const _bl_212 = _T.bl;
-      _pc_213 = rt.join (_pc_211,_r0_lev_270);;
-      _bl_214 = rt.join (_bl_212,_r0_lev_270);;
+    const $decltemp$100 = rt.constructLVal (_r0_val_287,_r0_lev_288,_r0_tlev_289);
+    _STACK[ _SP + 10] =  $decltemp$100
+    rt.rawAssertIsBoolean (_r0_val_287);
+    let _pc_231 = _T.pc;
+    let _bl_232 = _T.pc;
+    if (! _STACK[ _SP + 13] ) {
+      const _pc_229 = _T.pc;
+      const _bl_230 = _T.bl;
+      _pc_231 = rt.join (_pc_229,_r0_lev_288);;
+      _bl_232 = rt.join (_bl_230,_r0_lev_288);;
     }
     _SP_OLD = _SP; 
-    _SP = _SP +  18 ;
+    _SP = _SP +  19 ;
     _STACK[_SP - 5] = _SP_OLD;
     _STACK[_SP - 4] = _T.pc;
     _STACK[_SP - 3] = this.$$$bobAgent85$$$kont2
@@ -1092,30 +1092,30 @@ function Top (rt) {
     _STACK[_SP - 1] = false;
     _T._sp = _SP;
     _T.setBranchFlag()
-    if (_r0_val_269) {
-      const _val_215 = $env.gensym226.val;
-      const _vlev_216 = $env.gensym226.lev;
-      const _tlev_217 = $env.gensym226.tlev;
-      let _raw_219 = _T.pc;
-      let _raw_220 = _T.pc;
+    if (_r0_val_287) {
+      const _val_233 = $env.gensym226.val;
+      const _vlev_234 = $env.gensym226.lev;
+      const _tlev_235 = $env.gensym226.tlev;
+      let _raw_237 = _T.pc;
+      let _raw_238 = _T.pc;
       if (! _STACK[ _SP + -6] ) {
-        _raw_219 = rt.join (_pc_213,_vlev_216);;
-        _raw_220 = rt.join (_pc_213,_tlev_217);;
-        _T.bl = rt.wrap_block_rhs (_bl_214);
+        _raw_237 = rt.join (_pc_231,_vlev_234);;
+        _raw_238 = rt.join (_pc_231,_tlev_235);;
+        _T.bl = rt.wrap_block_rhs (_bl_232);
       }
-      _T.r0_val = _val_215;
-      _T.r0_lev = _raw_219;
-      _T.r0_tlev = _raw_220;
+      _T.r0_val = _val_233;
+      _T.r0_lev = _raw_237;
+      _T.r0_tlev = _raw_238;
       return _T.returnImmediate ();
     } else {
-      let _raw_225 = _T.pc;
+      let _raw_243 = _T.pc;
       if (! _STACK[ _SP + -6] ) {
-        _raw_225 = rt.join (_pc_213,_pc_init);;
-        _T.bl = rt.wrap_block_rhs (_bl_214);
+        _raw_243 = rt.join (_pc_231,_pc_init);;
+        _T.bl = rt.wrap_block_rhs (_bl_232);
       }
       _T.r0_val = gensym187$$$const;
-      _T.r0_lev = _raw_225;
-      _T.r0_tlev = _raw_225;
+      _T.r0_lev = _raw_243;
+      _T.r0_tlev = _raw_243;
       return _T.returnImmediate ();
     }
   }
@@ -1125,8 +1125,8 @@ function Top (rt) {
     let _STACK = _T.callStack
     let _SP = _T._sp
     let _SP_OLD
-    _STACK[ _SP + 12] = _T.checkDataBounds( _STACK[ _SP + 12] )
-    _T.boundSlot = _SP + 12
+    _STACK[ _SP + 13] = _T.checkDataBounds( _STACK[ _SP + 13] )
+    _T.boundSlot = _SP + 13
     const gensym205$$$const = 5
     const gensym202$$$const = "pattern match failure in let declaration"
     const gensym198$$$const = 1
@@ -1134,26 +1134,24 @@ function Top (rt) {
     const gensym194$$$const = 3
     const gensym192$$$const = 4
     const gensym187$$$const = rt.__unitbase
-    const gensym190 = _STACK[ _SP + 9]
-    const $env = _STACK[ _SP + 11]
-    const _r0_val_272 = _T.r0_val;
-    const _val_189 = gensym190.val;
-    const _vlev_190 = gensym190.lev;
-    rt.rawAssertIsBoolean (_val_189);
-    let _r0_lev_273 = _T.pc;
-    let _r0_tlev_274 = _T.pc;
-    let _pc_194 = _T.pc;
-    let _bl_195 = _T.pc;
-    if (! _STACK[ _SP + 12] ) {
-      _r0_lev_273 = _T.r0_lev;
-      _r0_tlev_274 = _T.r0_tlev;
-      const _pc_192 = _T.pc;
-      const _bl_193 = _T.bl;
-      _pc_194 = rt.join (_pc_192,_vlev_190);;
-      _bl_195 = rt.join (_bl_193,_vlev_190);;
+    const _raw_176 = _STACK[ _SP + 6]
+    const _raw_182 = _STACK[ _SP + 7]
+    const $env = _STACK[ _SP + 12]
+    const _r0_val_290 = _T.r0_val;
+    let _r0_lev_291 = _T.pc;
+    let _r0_tlev_292 = _T.pc;
+    let _pc_212 = _T.pc;
+    let _bl_213 = _T.pc;
+    if (! _STACK[ _SP + 13] ) {
+      _r0_lev_291 = _T.r0_lev;
+      _r0_tlev_292 = _T.r0_tlev;
+      const _pc_210 = _T.pc;
+      const _bl_211 = _T.bl;
+      _pc_212 = rt.join (_pc_210,_raw_182);;
+      _bl_213 = rt.join (_bl_211,_raw_182);;
     }
     _SP_OLD = _SP; 
-    _SP = _SP +  18 ;
+    _SP = _SP +  19 ;
     _STACK[_SP - 5] = _SP_OLD;
     _STACK[_SP - 4] = _T.pc;
     _STACK[_SP - 3] = this.$$$bobAgent85$$$kont3
@@ -1161,32 +1159,32 @@ function Top (rt) {
     _STACK[_SP - 1] = false;
     _T._sp = _SP;
     _T.setBranchFlag()
-    if (_val_189) {
-      let _raw_200 = _T.pc;
-      let _raw_201 = _T.pc;
+    if (_raw_176) {
+      let _raw_218 = _T.pc;
+      let _raw_219 = _T.pc;
       if (! _STACK[ _SP + -6] ) {
-        _raw_200 = rt.join (_pc_194,_r0_lev_273);;
-        _raw_201 = rt.join (_pc_194,_r0_tlev_274);;
-        _T.bl = rt.wrap_block_rhs (_bl_195);
+        _raw_218 = rt.join (_pc_212,_r0_lev_291);;
+        _raw_219 = rt.join (_pc_212,_r0_tlev_292);;
+        _T.bl = rt.wrap_block_rhs (_bl_213);
       }
-      _T.r0_val = _r0_val_272;
-      _T.r0_lev = _raw_200;
-      _T.r0_tlev = _raw_201;
+      _T.r0_val = _r0_val_290;
+      _T.r0_lev = _raw_218;
+      _T.r0_tlev = _raw_219;
       return _T.returnImmediate ();
     } else {
-      const _val_202 = $env.gensym238.val;
-      const _vlev_203 = $env.gensym238.lev;
-      const _tlev_204 = $env.gensym238.tlev;
-      let _raw_206 = _T.pc;
-      let _raw_207 = _T.pc;
+      const _val_220 = $env.gensym238.val;
+      const _vlev_221 = $env.gensym238.lev;
+      const _tlev_222 = $env.gensym238.tlev;
+      let _raw_224 = _T.pc;
+      let _raw_225 = _T.pc;
       if (! _STACK[ _SP + -6] ) {
-        _raw_206 = rt.join (_pc_194,_vlev_203);;
-        _raw_207 = rt.join (_pc_194,_tlev_204);;
-        _T.bl = rt.wrap_block_rhs (_bl_195);
+        _raw_224 = rt.join (_pc_212,_vlev_221);;
+        _raw_225 = rt.join (_pc_212,_tlev_222);;
+        _T.bl = rt.wrap_block_rhs (_bl_213);
       }
-      _T.r0_val = _val_202;
-      _T.r0_lev = _raw_206;
-      _T.r0_tlev = _raw_207;
+      _T.r0_val = _val_220;
+      _T.r0_lev = _raw_224;
+      _T.r0_tlev = _raw_225;
       return _T.returnImmediate ();
     }
   }
@@ -1196,8 +1194,8 @@ function Top (rt) {
     let _STACK = _T.callStack
     let _SP = _T._sp
     let _SP_OLD
-    _STACK[ _SP + 12] = _T.checkDataBounds( _STACK[ _SP + 12] )
-    _T.boundSlot = _SP + 12
+    _STACK[ _SP + 13] = _T.checkDataBounds( _STACK[ _SP + 13] )
+    _T.boundSlot = _SP + 13
     const gensym205$$$const = 5
     const gensym202$$$const = "pattern match failure in let declaration"
     const gensym198$$$const = 1
@@ -1209,17 +1207,17 @@ function Top (rt) {
     const _$reg0_tlev = _STACK[ _SP + 1]
     const _$reg0_val = _STACK[ _SP + 2]
     const _pc_init = _STACK[ _SP + 3]
-    const _raw_5 = _STACK[ _SP + 6]
-    const $env = _STACK[ _SP + 11]
-    const _r0_val_284 = _T.r0_val;
-    rt.rawAssertIsBoolean (_r0_val_284);
+    const _raw_5 = _STACK[ _SP + 8]
+    const $env = _STACK[ _SP + 12]
+    const _r0_val_302 = _T.r0_val;
+    rt.rawAssertIsBoolean (_r0_val_302);
     let _bl_45 = _T.pc;
-    if (! _STACK[ _SP + 12] ) {
-      const _r0_lev_285 = _T.r0_lev;
+    if (! _STACK[ _SP + 13] ) {
+      const _r0_lev_303 = _T.r0_lev;
       const _bl_44 = _T.bl;
-      _bl_45 = rt.join (_bl_44,_r0_lev_285);;
+      _bl_45 = rt.join (_bl_44,_r0_lev_303);;
     }
-    if (_r0_val_284) {
+    if (_r0_val_302) {
       const _val_49 = $env.gensym247.val;
       const _vlev_50 = $env.gensym247.lev;
       const _tlev_51 = $env.gensym247.tlev;
@@ -1233,7 +1231,7 @@ function Top (rt) {
       let _raw_68 = _T.pc;
       let _raw_69 = _T.pc;
       let _bl_79 = _T.pc;
-      if (! _STACK[ _SP + 12] ) {
+      if (! _STACK[ _SP + 13] ) {
         const _bl_53 = rt.join (_bl_45,_$reg0_tlev);;
         const _bl_55 = rt.join (_bl_53,_tlev_51);;
         _pc_60 = _T.pc;
@@ -1249,47 +1247,45 @@ function Top (rt) {
         _bl_79 = rt.join (_bl_77,_pc_init);;
       }
       const gensym199 = rt.constructLVal (_val_57,_raw_68,_raw_69);
-      _STACK[ _SP + 10] =  gensym199
+      _STACK[ _SP + 11] =  gensym199
       const lval104 = rt.raw_index (_$reg0_val,gensym196$$$const);;
       const _val_105 = lval104.val;
       const _vlev_106 = lval104.lev;
       const _tlev_107 = lval104.tlev;
-      let _raw_89 = _T.pc;
-      let _raw_116 = _T.pc;
-      let _raw_117 = _T.pc;
-      let _bl_127 = _T.pc;
-      if (! _STACK[ _SP + 12] ) {
+      const lval152 = rt.raw_index (_$reg0_val,gensym192$$$const);;
+      const _val_153 = lval152.val;
+      _STACK[ _SP + 9] =  _val_153
+      const _vlev_154 = lval152.lev;
+      const _tlev_155 = lval152.tlev;
+      const _val_169 = $env.gensym239.val;
+      const _vlev_170 = $env.gensym239.lev;
+      const _tlev_171 = $env.gensym239.tlev;
+      rt.rawAssertPairsAreStringsOrNumbers (_val_105,_val_169);
+      const _raw_176 = _val_105 > _val_169;
+      _STACK[ _SP + 6] =  _raw_176
+      const _val_184 = $env.shareInterest74.val;
+      const _vlev_185 = $env.shareInterest74.lev;
+      const _val_191 = $env.gensym229.val;
+      const _vlev_192 = $env.gensym229.lev;
+      const _tlev_193 = $env.gensym229.tlev;
+      rt.rawAssertIsFunction (_val_184);
+      let _raw_164 = _T.pc;
+      let _raw_165 = _T.pc;
+      let _raw_182 = _T.pc;
+      let _pc_189 = _T.pc;
+      let _bl_190 = _T.pc;
+      if (! _STACK[ _SP + 13] ) {
         const _raw_88 = rt.join (_$reg0_tlev,_pc_init);;
-        _raw_89 = rt.join (_raw_88,_pc_60);;
+        const _raw_89 = rt.join (_raw_88,_pc_60);;
         const _bl_101 = rt.join (_bl_79,_$reg0_tlev);;
         const _bl_103 = rt.join (_bl_101,_pc_init);;
         const _raw_109 = rt.join (_vlev_106,_pc_60);;
         const _raw_111 = rt.join (_raw_109,_raw_5);;
         const _raw_114 = rt.join (_raw_89,_tlev_107);;
-        _raw_116 = rt.join (_pc_60,_raw_111);;
-        _raw_117 = rt.join (_pc_60,_raw_114);;
+        const _raw_116 = rt.join (_pc_60,_raw_111);;
+        const _raw_117 = rt.join (_pc_60,_raw_114);;
         const _bl_125 = rt.join (_bl_103,_$reg0_tlev);;
-        _bl_127 = rt.join (_bl_125,_pc_init);;
-      }
-      const gensym195 = rt.constructLVal (_val_105,_raw_116,_raw_117);
-      const lval152 = rt.raw_index (_$reg0_val,gensym192$$$const);;
-      const _val_153 = lval152.val;
-      _STACK[ _SP + 7] =  _val_153
-      const _vlev_154 = lval152.lev;
-      const _tlev_155 = lval152.tlev;
-      const gensym190 = rt.eq (gensym195,$env.gensym239);;
-      _STACK[ _SP + 9] =  gensym190
-      const _val_166 = $env.shareInterest74.val;
-      const _vlev_167 = $env.shareInterest74.lev;
-      const _val_173 = $env.gensym229.val;
-      const _vlev_174 = $env.gensym229.lev;
-      const _tlev_175 = $env.gensym229.tlev;
-      rt.rawAssertIsFunction (_val_166);
-      let _raw_164 = _T.pc;
-      let _raw_165 = _T.pc;
-      let _pc_171 = _T.pc;
-      let _bl_172 = _T.pc;
-      if (! _STACK[ _SP + 12] ) {
+        const _bl_127 = rt.join (_bl_125,_pc_init);;
         const _bl_149 = rt.join (_bl_127,_$reg0_tlev);;
         const _bl_151 = rt.join (_bl_149,_pc_init);;
         const _raw_157 = rt.join (_vlev_154,_pc_60);;
@@ -1297,14 +1293,20 @@ function Top (rt) {
         const _raw_162 = rt.join (_raw_89,_tlev_155);;
         _raw_164 = rt.join (_pc_60,_raw_159);;
         _raw_165 = rt.join (_pc_60,_raw_162);;
-        _pc_171 = rt.join (_pc_60,_vlev_167);;
-        _bl_172 = rt.join (_bl_151,_vlev_167);;
-        _T.bl = rt.wrap_block_rhs (_bl_151);
+        const _bl_173 = rt.join (_bl_151,_raw_117);;
+        const _bl_175 = rt.join (_bl_173,_tlev_171);;
+        const _raw_177 = rt.join (_raw_116,_vlev_170);;
+        const _raw_179 = rt.join (_raw_177,_pc_60);;
+        _raw_182 = rt.join (_pc_60,_raw_179);;
+        _pc_189 = rt.join (_pc_60,_vlev_185);;
+        _bl_190 = rt.join (_bl_175,_vlev_185);;
+        _T.bl = rt.wrap_block_rhs (_bl_175);
       }
       _STACK[ _SP + 4] =  _raw_164
       _STACK[ _SP + 5] =  _raw_165
+      _STACK[ _SP + 7] =  _raw_182
       _SP_OLD = _SP; 
-      _SP = _SP +  18 ;
+      _SP = _SP +  19 ;
       _STACK[_SP - 5] = _SP_OLD;
       _STACK[_SP - 4] = _T.pc;
       _STACK[_SP - 3] = this.$$$bobAgent85$$$kont4
@@ -1320,21 +1322,21 @@ function Top (rt) {
       _STACK[_SP - 1] = false;
       _T._sp = _SP;
       if (! _STACK[ _SP + -11] ) {
-        _T.pc = _pc_171;
-        _T.bl = rt.wrap_block_rhs (_bl_172);
+        _T.pc = _pc_189;
+        _T.bl = rt.wrap_block_rhs (_bl_190);
       }
-      _T.r0_val = _val_173;
-      _T.r0_lev = _vlev_174;
-      _T.r0_tlev = _tlev_175;
-      return _val_166
+      _T.r0_val = _val_191;
+      _T.r0_lev = _vlev_192;
+      _T.r0_tlev = _tlev_193;
+      return _val_184
     } else {
-      if (! _STACK[ _SP + 12] ) {
-        const _pc_278 = _T.pc;
-        const _pc_280 = rt.join (_pc_278,_pc_init);;
-        const _bl_281 = rt.join (_bl_45,_pc_init);;
-        const _bl_283 = rt.join (_bl_281,_pc_init);;
-        _T.pc = _pc_280;
-        _T.bl = rt.wrap_block_rhs (_bl_283);
+      if (! _STACK[ _SP + 13] ) {
+        const _pc_296 = _T.pc;
+        const _pc_298 = rt.join (_pc_296,_pc_init);;
+        const _bl_299 = rt.join (_bl_45,_pc_init);;
+        const _bl_301 = rt.join (_bl_299,_pc_init);;
+        _T.pc = _pc_298;
+        _T.bl = rt.wrap_block_rhs (_bl_301);
       }
       rt.rawErrorPos (gensym202$$$const,':37:21');
     }
@@ -1682,7 +1684,7 @@ function Top (rt) {
     const gensym244$$$const = rt.mkLabel("{bob}")
     const gensym245$$$const = rt.mkLabel("{}")
     const gensym242$$$const = "Bob"
-    const gensym240$$$const = 2105
+    const gensym240$$$const = 2101
     const gensym238$$$const = false
     const gensym230$$$const = "winter"
     const gensym231$$$const = "beer"
@@ -1739,7 +1741,7 @@ function Top (rt) {
     const gensym244$$$const = rt.mkLabel("{bob}")
     const gensym245$$$const = rt.mkLabel("{}")
     const gensym242$$$const = "Bob"
-    const gensym240$$$const = 2105
+    const gensym240$$$const = 2101
     const gensym238$$$const = false
     const gensym230$$$const = "winter"
     const gensym231$$$const = "beer"
