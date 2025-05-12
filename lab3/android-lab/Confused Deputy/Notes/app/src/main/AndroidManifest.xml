@@ -37,8 +37,10 @@
                 android:value=".MainActivity" />
         </activity>
 
+        <!--FIX: Make the activity non-exported so it can be only accessed within the app.-->
         <activity
             android:name=".DataBaseActivity"
+            android:exported="false"
             android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="tcs.lbs.notes.DataBaseManager"/>
