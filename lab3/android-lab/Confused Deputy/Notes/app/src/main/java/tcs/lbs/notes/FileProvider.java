@@ -8,6 +8,8 @@ import android.os.ParcelFileDescriptor;
 import android.util.Log;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 // a ContentProvider to facilitate sharing the txt file of a note
 public class FileProvider extends ContentProvider
@@ -35,7 +37,43 @@ public class FileProvider extends ContentProvider
     }
 
 
+    // Inside the Notes app's content provider class
+    // Fix for the vulnerable openFile method
 
+//    @Override
+//    public ParcelFileDescriptor openFile(Uri uri, String mode) throws FileNotFoundException {
+//        // Get the path from the URI
+//        String path = uri.getPath();
+//
+//        // Security check 1: Reject paths with ".." to prevent directory traversal
+//        if (path.contains("..")) {
+//            throw new SecurityException("Path traversal attempt detected");
+//        }
+//
+//        // Security check 2: Normalize path and ensure it's within bounds
+//        File requestedFile = new File(getContext().getFilesDir(), path);
+//
+//        // Security check 3: Validate the normalized path is still within allowed directory
+//        String canonicalPath;
+//        try {
+//            canonicalPath = requestedFile.getCanonicalPath();
+//            String baseDirPath = getContext().getFilesDir().getCanonicalPath();
+//
+//            if (!canonicalPath.startsWith(baseDirPath)) {
+//                throw new SecurityException("Attempted to access file outside permitted directory");
+//            }
+//        } catch (IOException e) {
+//            throw new SecurityException("Path resolution error", e);
+//        }
+//
+//        // If we passed all security checks, proceed with file access
+//        int fileMode = ParcelFileDescriptor.MODE_READ_ONLY;
+//        if (mode.contains("w")) {
+//            fileMode = ParcelFileDescriptor.MODE_WRITE_ONLY;
+//        }
+//
+//        return ParcelFileDescriptor.open(requestedFile, fileMode);
+//    }
 
 
     // We are not using content providers for database interactions
