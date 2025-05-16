@@ -147,10 +147,10 @@ public class ForegroundLocationService extends Service implements LocationListen
         weatherIntent.putExtra("Location", _location);
 
         // Send intra-app broadcast to MainActivity
-        sendBroadcast(locationAppIntent);
+        sendBroadcast(locationAppIntent, android.Manifest.permission.ACCESS_FINE_LOCATION);
 
         // Send inter-app broadcast to WeatherApp
-        sendBroadcast(weatherIntent);
+        sendBroadcast(weatherIntent, android.Manifest.permission.ACCESS_FINE_LOCATION);
     }
 
     @Override
