@@ -1,0 +1,8 @@
+# Ignore IntelliJ/Android Studio project files
+.idea/
+
+# Ignore all XML files
+*.xml
+
+# Ignore Python virtual environments
+venv/
